@@ -14,7 +14,7 @@ namespace Entities.Concrete
         public  string CarName { get; set; } = string.Empty;
         public int BrandId { get; set; }
         public int ColorId { get; set; }
-        public short ModelYear { get; set; }
+        public string ModelYear { get; set; } = string.Empty;
         public Decimal DailyPrice { get; set; }
         public string Description { get; set; } = string.Empty;
     }

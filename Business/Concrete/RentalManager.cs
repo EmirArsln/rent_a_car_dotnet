@@ -29,7 +29,12 @@ namespace Business.Concrete
 
         public IResult CheckReturnDate(int carId)
         {
-            throw new NotImplementedException();
+            var result = _rentalDal.GetRentalDetails(c => c.CarId == carId && c.ReturnDate == null);
+            if (result.Count > 0)
+            {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
         }
 
         public IResult Delete(Rental rental)
@@ -45,7 +50,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetAllRentalDetails()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
         }
 
         public IDataResult<Rental> GetById(int id)
@@ -55,7 +60,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails(int carId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(c => c.CarId == carId));
         }
 
         public IResult Update(Rental rental)

@@ -12,7 +12,7 @@ namespace Entities.DTOs
     {
         public int CarId { get; set; }
         public string CarName { get; set; } = string.Empty;
-        public int ModelYear { get; set; } 
+        public string ModelYear { get; set; } 
         public string Description { get; set; } = string.Empty;
         public string BrandName { get; set; } = string.Empty;
         public string ColorName { get; set; } = string.Empty;

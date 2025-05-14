@@ -1,4 +1,7 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Aspect.AutoFac.Validation;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
@@ -10,14 +13,48 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class ColorManager (IColorDal colorDal): IColorService
+    public class ColorManager : IColorService
     {
-        readonly IColorDal _colorDal = colorDal;
+       
+        
+        readonly IColorDal _colorDal;
 
-        public List<Color> GetCarsByColorId(int colorId)
+        public ColorManager(IColorDal colorDal)
         {
-            var colors = _colorDal.Get(c => c.ColorId == colorId);
-            return colors != null ? [colors] : [];
+           _colorDal = colorDal;
+        }
+
+         //[SecuredOperation("color.add, admin")]
+         // [ValidationAspect(typeof(ColorValidator))]
+        public IResult Add(Color color)
+        {
+          //ValidationTool.Validate(new ColorValidator(), color);
+
+           _colorDal.Add(color);
+           return new SuccessResult();
+        }
+
+        public IResult Delete(Color color)
+        {
+          _colorDal.Delete(color);
+          return new SuccessResult();
+        }
+
+        public IDataResult<List<Color>> GetAll()
+        {
+           return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.EntitiesListed);
+        }
+
+        public IResult Update(Color color)
+        {
+           _colorDal.Update(color);
+           return new SuccessResult();
+        }
+
+        public IDataResult<Color> GetByColorId(int colorId)
+        {
+            return new SuccessDataResult<Color>(_colorDal.Get(b => b.ColorId == colorId));
         }
     }
+    
 }

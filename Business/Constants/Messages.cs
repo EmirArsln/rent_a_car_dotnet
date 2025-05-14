@@ -20,6 +20,16 @@ namespace Business.Constants
         public readonly static string CarDeleted = "Araba Silindi";
         public readonly static string CarUpdated = "Araba Güncellendi";
         public readonly static string EntitiesListed = "Arabalar Listelendi";
+        public readonly static string AddedMessage = "Entity Added!";
+        public readonly static string DeletedMessage = "Entity Deleted!";
+        public readonly static string UpdatedMessage = "Entity Updated!";
+        public readonly static string ErrorMessage = "shit";
+        public readonly static string RentalAddedErrorMessage = "you cant";
+        public readonly static string RentalAddedMessage = "yes you can see";
+        public readonly static string FailAddedImageLimit = " no more ";
+        public readonly static string ImageFound = "I found";
+        public readonly static string FileFound = "we found";
+        public readonly static string ImageCount = "just 5 brother ";
     }
 }
 

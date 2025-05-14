@@ -13,6 +13,40 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, RentCarContext>, IRentalDal
     {
-       
+        public List<RentalDetailDto> GetRentalDetails(Expression<Func<Rental, bool>> filter = null)
+        {
+            using (RentCarContext context = new RentCarContext())
+            {
+                var result = from rental in filter is null ? context.Rentals : context.Rentals.Where(filter)
+                             join cars in context.Cars
+                             on rental.CarId equals cars.CarId
+                             join user in context.Users
+                             on rental.UserId equals user.UserId
+                             join color in context.Colors
+                             on cars.ColorId equals color.ColorId
+                             join brand in context.Brands
+                             on cars.BrandId equals brand.BrandId
+                             select new RentalDetailDto
+                             {
+                                 RentalId = rental.RentalId,
+                                 RentDate = rental.RentalDate,
+                                 ReturnDate = rental.ReturnDate,
+                                 BrandName = brand.BrandName,
+                                 ColorName = color.ColorName,
+                                 CarId = cars.CarId,
+                                 DailyPrice = cars.DailyPrice,
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName,
+                                 ModelYear = cars.ModelYear,
+                                 Description = cars.Description
+
+
+                             };
+
+                return result.ToList();
+
+
+            }
+        }
     }
 }

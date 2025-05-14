@@ -11,7 +11,6 @@ namespace Entities.DTOs
     {
         public int RentalId { get; set; }
         public int CarId { get; set; }
-        public int CustomerId { get; set; }
         public string FirstName { get; set; } =string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string Model { get; set; } = string.Empty;
@@ -22,5 +21,6 @@ namespace Entities.DTOs
         public decimal DailyPrice { get; set; }
         public DateTime RentDate { get; set; }
         public DateTime? ReturnDate { get; set; }
+        public int UserId { get; set; }
     }
 }
