@@ -20,7 +20,7 @@ namespace Business.Concrete
 {
     public class CarManager(ICarDal carDal) : ICarService
     {
-        readonly ICarDal _carDal = carDal;
+       private readonly ICarDal _carDal = carDal;
 
 
        //[SecuredOperation("car.add,user")]
