@@ -81,14 +81,3 @@ namespace WebAPI
 
 
 
-// [HttpPost("transaction")]
-//public IActionResult TransactionTest(Car car)
-//{
-//  var result = _carService.TransactionalOperation(car);
-//if (result.Success)
-//{
-//  return Ok(result.Message);
-//}
-
-//return BadRequest(result.Message);
-//}
