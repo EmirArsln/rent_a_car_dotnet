@@ -53,13 +53,15 @@ namespace WebAPI
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline
+            app.ConfigureCustomExceptionMiddleware();
+
             if (app.Environment.IsDevelopment())
             {
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            
+
             app.UseCors(builder=>builder.WithOrigins("https://localhost:44346").AllowAnyHeader());
 
             app.UseHttpsRedirection();
