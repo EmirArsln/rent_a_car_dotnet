@@ -32,12 +32,10 @@ namespace DataAccess.Concrete.EntityFramework
                              ModelYear = c.ModelYear,
                              Description = c.Description,
                              DailyPrice = (int)c.DailyPrice,
-                             //  ImagePath = (from img in context.CarImages
-                             //             where img.CarId == c.CarId
-                             //           select img.ImagePath).FirstOrDefault()
+                             ImagePath = (from CarImage in context.CarImages
+                                          where CarImage.CarId == c.CarId
+                                          select CarImage.ImagePath).FirstOrDefault()
 
-
-                             //ImagePath = img.ImagePath == null ? "Image Not Found" : img.ImagePath
                          };
 
             return [.. result];
