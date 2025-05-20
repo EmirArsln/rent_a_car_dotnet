@@ -17,5 +17,9 @@ namespace Entities.Concrete
         public string ModelYear { get; set; } = string.Empty;
         public Decimal DailyPrice { get; set; }
         public string Description { get; set; } = string.Empty;
+        public int Seats { get; set; }
+        public string Gear { get; set; }
+        public int Speed { get; set; }
+        public string FuelType { get; set; }
     }
 }

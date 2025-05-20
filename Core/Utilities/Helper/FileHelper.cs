@@ -67,7 +67,7 @@ namespace Core.Utilities.Helper
         }
 
 
-        //Verification Methods
+        
 
         private static IResult CheckFileTypeValid(string type)
         {
