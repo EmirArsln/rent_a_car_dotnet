@@ -23,7 +23,7 @@ namespace Business.Concrete
        private readonly ICarDal _carDal = carDal;
 
 
-       //[SecuredOperation("car.add,user")]
+       [SecuredOperation("admin")]
        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {

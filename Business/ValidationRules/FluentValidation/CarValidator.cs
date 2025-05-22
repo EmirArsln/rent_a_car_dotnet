@@ -14,6 +14,7 @@ namespace Business.ValidationRules.FluentValidation
         public CarValidator()
         {
             RuleFor(p=>p.CarName).NotEmpty();
+            RuleFor(p => p.Seats).LessThan(7);
             
         }
     }
