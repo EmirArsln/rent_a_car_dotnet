@@ -18,6 +18,10 @@ namespace Entities.DTOs
         public string ColorName { get; set; } = string.Empty;
         public decimal DailyPrice { get; set; }
         public string ImagePath { get; set; } = string.Empty;
+        public int Seats { get; set; }
+        public string Gear { get; set; }
+        public int Speed { get; set; }
+        public string FuelType { get; set; }
 
     }
 }

@@ -38,7 +38,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  FirstName = user.FirstName,
                                  LastName = user.LastName,
                                  ModelYear = cars.ModelYear,
-                                 Description = cars.Description
+                                 Description = cars.Description,
+                                 Gear = cars.Gear,
+                                 Speed = cars.Speed,
+                                 Seats = cars.Seats,
+                                 FuelType = cars.FuelType,
 
 
                              };

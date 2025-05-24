@@ -31,6 +31,10 @@ namespace DataAccess.Concrete.EntityFramework
                              CarName = c.CarName,
                              ModelYear = c.ModelYear,
                              Description = c.Description,
+                             Seats = c.Seats,
+                             FuelType = c.FuelType,
+                             Gear = c.Gear,
+                             Speed = c.Speed,
                              DailyPrice = (int)c.DailyPrice,
                              ImagePath = (from CarImage in context.CarImages
                                           where CarImage.CarId == c.CarId

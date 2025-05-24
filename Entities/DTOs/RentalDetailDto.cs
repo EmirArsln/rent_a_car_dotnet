@@ -22,5 +22,9 @@ namespace Entities.DTOs
         public DateTime RentDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public int UserId { get; set; }
+        public int Seats { get; set; }
+        public string Gear { get; set; }
+        public int Speed { get; set; }
+        public string FuelType { get; set; }
     }
 }
