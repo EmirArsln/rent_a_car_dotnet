@@ -92,5 +92,18 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("exporttoexcel")]
+        public IActionResult ExportToExcel()
+        {
+            var result = _rentalService.GetRentalDetailsExcel();
+            if (result.Success)
+            {
+                return File(result.Data,
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    "kiralama_raporu.xlsx");
+            }
+
+            return BadRequest(result.Message);
+        }
     }
 }

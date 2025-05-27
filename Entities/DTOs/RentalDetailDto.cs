@@ -13,7 +13,6 @@ namespace Entities.DTOs
         public int CarId { get; set; }
         public string FirstName { get; set; } =string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public string Model { get; set; } = string.Empty;
         public string BrandName { get; set; } = string.Empty;
         public string ColorName { get; set; } = string.Empty;
         public string ModelYear { get; set; } = string.Empty;

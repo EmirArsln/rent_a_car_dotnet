@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.Helpers;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -67,6 +68,12 @@ namespace Business.Concrete
         {
             _rentalDal.Update(rental);
             return new SuccessResult();
+        }
+        public IDataResult<byte[]> GetRentalDetailsExcel()
+        {
+            var rentals = GetAllRentalDetails().Data;
+            var excelBytes = ExcelHelper.GenerateRentalExcel(rentals);
+            return new SuccessDataResult<byte[]>(excelBytes, "Excel başarıyla oluşturuldu.");
         }
     }
 }

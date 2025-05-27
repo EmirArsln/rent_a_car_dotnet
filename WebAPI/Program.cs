@@ -7,23 +7,27 @@ using Core.Utilities.Security.Encrptions;
 using Core.Utilities.Security.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Core.Extensions; 
+using Core.Extensions;
+
+
 namespace WebAPI
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+
+           
             var builder = WebApplication.CreateBuilder(args);
 
-            // Use Autofac as the DI container
+           
             builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
             builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
             {
                 containerBuilder.RegisterModule(new AutofacBusinessModule());
             });
 
-
+         
             builder.Services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() });
 
             builder.Services.AddCors();
