@@ -56,7 +56,7 @@ namespace Business.Concrete
         {
             if (DateTime.Now.Hour >= 02 && DateTime.Now.Hour <= 03)
             {
-                return new ErrorDataResult<List<Car>>();
+                return new ErrorDataResult<List<Car>>(Messages.ErrorMessage);
             }
 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => true), Messages.EntitiesListed);

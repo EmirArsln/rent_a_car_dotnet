@@ -1,6 +1,8 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofact;
 using Business.Constants;
 using Business.Helpers;
+using Core.Aspect.AutoFac.Caching;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -17,6 +19,8 @@ namespace Business.Concrete
     public class RentalManager(IRentalDal rentalDal) : IRentalService
     {
         readonly  IRentalDal _rentalDal = rentalDal;
+
+        [SecuredOperation("admin")]
         public IResult Add(Rental rental)
         {
             var result = CheckReturnDate(rental.CarId);
@@ -43,7 +47,7 @@ namespace Business.Concrete
             _rentalDal.Delete(rental);
             return new SuccessResult();
         }
-
+       
         public IDataResult<List<Rental>> GetAll()
         {
             return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.EntitiesListed);

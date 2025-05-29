@@ -1,7 +1,9 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace WebAPI.Controllers
 {
@@ -59,10 +61,14 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
+        [Authorize]
         [HttpPost("addrental")]
         public IActionResult AddRental(Rental rental)
         {
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+           
+            rental.UserId = userId;
             var result = _rentalService.Add(rental);
             if (result.Success)
             {
